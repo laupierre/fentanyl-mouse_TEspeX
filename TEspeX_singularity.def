@@ -79,7 +79,7 @@ From: ubuntu:22.04
     conda config --file /.condarc --add channels conda-forge
     conda config --file /.condarc --set channel_priority strict
  	
-    conda create -n TEspeX_deps --override-channels -c bioconda -c defaults openjdk samtools python=3.6 pandas=0.23.0 pysam'>=0.15.0,<=0.15.1'
+    conda create -n TEspeX_deps --override-channels -c bioconda -c defaults openjdk samtools h5py python=3.6 pandas=0.23.0 pysam'>=0.15.0,<=0.15.1'
     cd /home
     git clone https://github.com/fansalon/TEspeX
 	
