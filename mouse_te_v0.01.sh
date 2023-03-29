@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#### This is the TEspeX analysis for the mouse species (v.0.1dev)
+#### This is the TEspeX analysis for the mouse species (v.0.0.1dev)
 
 
 #################
