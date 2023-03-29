@@ -87,7 +87,9 @@ From: ubuntu:22.04
 
 %environment
 	export PATH=/home/TEspeX:$PATH
-
+	
+	# conda activate is called by python3 but the implementation is not optimal
+	
 	echo ". /usr/local/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
 	echo "conda activate TEspeX_deps" >> $SINGULARITY_ENVIRONMENT
 	
