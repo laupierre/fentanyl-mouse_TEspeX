@@ -88,7 +88,7 @@ From: ubuntu:22.04
     mkdir -p /opt/etc
     echo -e "#! /bin/bash\n\n# script to activate the conda environment" > ~/.bashrc 
     conda init bash
-    echo -e "\nconda activate myTool_env" >> ~/.bashrc
+    echo -e "\nconda activate TEspeX_deps" >> ~/.bashrc
     cp ~/.bashrc /opt/etc/bashrc
     
     
@@ -134,6 +134,9 @@ From: ubuntu:22.04
 
 
 %test
+	export PATH=/home/TEspeX:$PATH
+	conda init bash
+	conda activate TEspeX_deps
 	python3 /home/TEspeX/TEspeX.py --version
 
 	
