@@ -70,7 +70,7 @@ From: ubuntu:22.04
     /bin/bash Miniconda3-py310_23.1.0-1-Linux-x86_64.sh -bfp /usr/local
     
     conda update conda
-	  conda install -c conda-forge mamba
+    conda install -c conda-forge mamba
 	
     # conda configuration of channels in /.condarc file
     touch /.condarc
@@ -79,10 +79,9 @@ From: ubuntu:22.04
     conda config --file /.condarc --add channels conda-forge
     conda config --file /.condarc --set channel_priority strict
  	
- 	  conda create -n TEspeX_deps --override-channels -c bioconda -c defaults openjdk samtools python=3.6 pandas=0.23.0 pysam'>=0.15.0,<=0.15.1'
-	
-	  cd /home
-	  git clone https://github.com/fansalon/TEspeX
+    conda create -n TEspeX_deps --override-channels -c bioconda -c defaults openjdk samtools python=3.6 pandas=0.23.0 pysam'>=0.15.0,<=0.15.1'
+    cd /home
+    git clone https://github.com/fansalon/TEspeX
 	
 
 
