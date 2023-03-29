@@ -93,13 +93,13 @@ From: ubuntu:22.04
     
     
     # Download and unzip the Dfam curated database
-    #wget https://dfam.org/releases/Dfam_3.7/families/Dfam_curatedonly.h5.gz
-    #zcat Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
+    wget https://dfam.org/releases/Dfam_3.7/families/Dfam_curatedonly.h5.gz
+    zcat Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
 
 
     # Install the python3 script to retrieve fasta TE sequences from Dfam database
-    #wget https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
-    #chmod +x famdb.py
+    wget https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
+    chmod +x famdb.py
 
 
     #array=(LINE SINE DNA LTR RC Other Retroposon)
