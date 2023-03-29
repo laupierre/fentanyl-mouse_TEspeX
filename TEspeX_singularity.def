@@ -112,13 +112,15 @@ From: ubuntu:22.04
 
 
 %environment
-	export PATH=/home/TEspeX:$PATH
-	
 	export LC_ALL=en_US.utf-8
         export LANG=en_US.utf-8
-	source /opt/etc/bashrc
 	
-	# conda activate is called by python3 but the implementation is not optimal
+	# This source is for conda activate
+	source /opt/etc/bashrc
+	export PATH=/home/TEspeX:$PATH
+		
+		
+	# conda activate is needed by python3 but the implementation below is not optimal
 	
 	#echo ". /usr/local/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
 	#echo "conda activate TEspeX_deps" >> $SINGULARITY_ENVIRONMENT
