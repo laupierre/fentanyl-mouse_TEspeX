@@ -12,7 +12,7 @@ anno <- anno[ ,grep ("transcript_id", colnames (anno), invert=TRUE)]
 anno <- unique (anno)
 
 
-## normal results from the RNA-Seq IIT pipeline
+## normal STAR results from the RNA-Seq IIT pipeline
 a <- read.xlsx ("star_gene_raw_counts.xlsx")
 a <- a[ ,grep ("Gene|bam", colnames (a))]
 
