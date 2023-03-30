@@ -1,6 +1,6 @@
 # mouse TEspeX  
 
-This the TEspeX transposon analysis developped here:  
+This the TEspeX transposon analysis using the method developped here:  
 
 https://github.com/fansalon/TEspeX  
 
