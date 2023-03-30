@@ -11,8 +11,8 @@ https://github.com/fansalon/TEspeX
 4- In this example, we used the fentanyl mouse RNA=Seq experiment. The differential expression of genes and TEs is made by DESeq2 using the deseq2_wald_two_groups.R.  
 
 The results of the 3 comparisons is obtained:
-hippocampus_deseq2_FentanylvsControl_differential_expression.xlsx (F vs C)
-hippocampus_deseq2_WithdrawalvsControl_differential_expression.xlsx (W vs C)
-hippocampus_deseq2_WithdrawalvsFentanyl_differential_expression.xlsx (W vs F)
+hippocampus_deseq2_FentanylvsControl_with_transposons_differential_expression.xlsx (F vs C)
+hippocampus_deseq2_WithdrawalvsControl_with_transposons_differential_expression.xlsx (W vs C)
+hippocampus_deseq2_WithdrawalvsFentanyl_with_transposons_differential_expression.xlsx (W vs F)
 
 
