@@ -18,6 +18,8 @@ ORIENTATION=reverse
 
 cd $PBS_O_WORKDIR
 
+## Insert BBMap filtering if necessary
+
 #### TEspeX counting of TE families
 
 array=("LINE" "SINE" "DNA" "LTR" "RC" "Other" "Retroposon")
