@@ -4,6 +4,7 @@
 #PBS -q workq
 #PBS -N tespex
 
+cd $PBS_O_WORKDIR
 
 
 #### This is the TEspeX analysis for the mouse species - SE reads (v.0.0.1dev)
@@ -14,9 +15,6 @@ CPUS=12
 LENGTH=50
 ORIENTATION=reverse
 
-
-
-cd $PBS_O_WORKDIR
 
 ## Insert BBMap filtering if necessary
 
