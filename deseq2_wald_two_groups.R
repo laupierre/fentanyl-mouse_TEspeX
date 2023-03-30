@@ -3,7 +3,6 @@ library (DESeq2)
 library (ggplot2)
 
 
-
 ## See Github RNA-Seq_mouse/gene_annotation.R
 system ("cp /projects/ncrrbt_share_la/dev_pipe/gencode.vM32.annotation.txt .")
 
@@ -85,6 +84,46 @@ colnames (res)[1] <- "Geneid"
 res <- res[order (res$padj), ]
 
 write.xlsx (res, "hippocampus_deseq2_FentanylvsControl_with_transposons_differential_expression.xlsx", rowNames=F)
+
+
+# second contrast of interest (W vs C)
+ddsLRT <- DESeq(dds, test="LRT", full=~sex+condition, reduced=~sex)
+resultsNames(ddsLRT)
+
+res <- results(ddsLRT, contrast=list("condition_W_vs_C"), test="Wald")
+
+res <- merge (data.frame (res), counts (dds), by="row.names")
+res <- merge (res, annot, by.x="Row.names", by.y="Geneid", all.x=TRUE)
+
+res$gene_name [is.na (res$gene_name)] <- res$Row.names [is.na (res$gene_name)]
+res$external_gene_name [is.na (res$external_gene_name)] <- res$Row.names [is.na (res$external_gene_name)]
+res$gene_type[is.na (res$gene_type)] <- paste ("transposon", gsub (".*#", "", res$Row.names [is.na (res$gene_type)]), sep=":")
+
+colnames (res)[1] <- "Geneid"
+res <- res[order (res$padj), ]
+
+write.xlsx (res, "hippocampus_deseq2_WithdrawalvsControl_with_transposons_differential_expression.xlsx", rowNames=F)
+
+
+
+# third contrast of the two previous interaction terms, using the list() style of contrasts !!!
+ddsLRT <- DESeq(dds, test="LRT", full=~sex+condition, reduced=~sex)
+resultsNames(ddsLRT)
+
+res <- results(ddsLRT, contrast=list("condition_W_vs_C", "condition_F_vs_C"), test="Wald")  ## This is equivalent to W/F
+
+
+res <- merge (data.frame (res), counts (dds), by="row.names")
+res <- merge (res, annot, by.x="Row.names", by.y="Geneid")
+colnames (res)[1] <- "Geneid"
+res <- res[order (res$padj), ]
+
+write.xlsx (res, "hippocampus_deseq2_WithdrawalvsFentanyl_with_transposons_differential_expression.xlsx", rowNames=F)
+
+
+
+
+
 
 
 
