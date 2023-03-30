@@ -62,7 +62,7 @@ From: ubuntu:22.04
     libxrender1
     
     
-    #export LANG=C.UTF-8 LC_ALL=C.UTF-8
+    export LANG=C.UTF-8 LC_ALL=C.UTF-8
     
     
     # Install miniconda 3
@@ -122,11 +122,11 @@ From: ubuntu:22.04
 
 
 %environment
-	export LC_ALL=en_US.utf-8
-        export LANG=en_US.utf-8
+	export LANG=C.UTF-8 LC_ALL=C.UTF-8
 	
-	# This source is for conda activate
+	# This source is for conda activate to work
 	source /opt/etc/bashrc
+	
 	export PATH=/home/TEspeX:$PATH
 		
 		
