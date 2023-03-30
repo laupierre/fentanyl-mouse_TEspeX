@@ -3,6 +3,7 @@ library (DESeq2)
 library (ggplot2)
 
 
+
 ## See Github RNA-Seq_mouse/gene_annotation.R
 system ("cp /projects/ncrrbt_share_la/dev_pipe/gencode.vM32.annotation.txt .")
 
@@ -22,9 +23,6 @@ a <- a[grep ("miRNA|Mt_tRNA|Mt_rRNA|rRNA|snRNA|snoRNA|scRNA|sRNA|misc_RNA|scaRNA
 colnames (a) <- gsub ("Aligned.out.bam", "", colnames (a))
 colnames (a) <- gsub ("star.", "", colnames (a))
 
-
-
-## DESeq2 
 
 counts <- annot <- a
 
@@ -49,6 +47,20 @@ samples <- samples[idx, ]
 stopifnot (samples$sample == colnames (counts))
 
 
+
+## TEspeX counts from the outfile.txt
+
+tesp <- read.delim ("outfile.txt", row.names=1)
+colnames (tesp) <- gsub ("_R.*", "", colnames (tesp))
+tesp <- tesp[ ,colnames (tesp) %in% colnames (counts)]
+stopifnot (colnames (tesp) == colnames (counts))
+
+counts <- rbind (counts, tesp)
+
+
+
+## DESeq2 
+
 dds <- DESeqDataSetFromMatrix(countData = round (counts), colData = samples, design = ~ sex +condition)
                                  
 # keep <- rowSums(counts(dds)) >= 10
@@ -63,11 +75,18 @@ resultsNames(ddsLRT)
 res <- results(ddsLRT, contrast=list("condition_F_vs_C"), test="Wald")
 
 res <- merge (data.frame (res), counts (dds), by="row.names")
-res <- merge (res, annot, by.x="Row.names", by.y="Geneid")
+res <- merge (res, annot, by.x="Row.names", by.y="Geneid", all.x=TRUE)
+
+res$gene_name [is.na (res$gene_name)] <- res$Row.names [is.na (res$gene_name)]
+res$external_gene_name [is.na (res$external_gene_name)] <- res$Row.names [is.na (res$external_gene_name)]
+res$gene_type[is.na (res$gene_type)] <- paste ("transposon", gsub (".*#", "", res$Row.names [is.na (res$gene_type)]), sep=":")
+
 colnames (res)[1] <- "Geneid"
 res <- res[order (res$padj), ]
 
 write.xlsx (res, "hippocampus_deseq2_FentanylvsControl_with_transposons_differential_expression.xlsx", rowNames=F)
+
+
 
 
 
