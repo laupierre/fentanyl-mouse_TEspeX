@@ -48,7 +48,7 @@ apptainer exec $CONTAINER/tespex.sif sh -c \
 	 cd /home/TEspeX
 	 tespex=$PWD
 
-	 python3 TEspeX.py --num_threads $CPUS --TE $PBS_O_WORKDIR/mmusculus.Dfam.fa \
+	 python3 TEspeX.py --num_threads $CPUS --TE $PBS_O_WORKDIR/mmusculus.Dfam.fa.gz \
 	 --cdna $PBS_O_WORKDIR/$cdna \
 	 --ncrna $PBS_O_WORKDIR/$ncrna \
 	 --sample $PBS_O_WORKDIR/reads.txt --paired F --length $LENGTH --out $PBS_O_WORKDIR/tespex_results --strand $ORIENTATION"
