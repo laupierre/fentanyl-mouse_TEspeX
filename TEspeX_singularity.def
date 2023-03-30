@@ -83,8 +83,18 @@ From: ubuntu:22.04
     
     cd /home
     git clone https://github.com/fansalon/TEspeX
-	
-	
+
+    tespex=/home/TEspeX
+    cd $tespex/bin
+    wget -O samtools-1.3.1.tar.bz2 https://github.com/samtools/samtools/releases/download/1.3.1/samtools-1.3.1.tar.bz2
+    tar xjf samtools-1.3.1.tar.bz2
+    cd samtools-1.3.1
+    ./configure --prefix=$PWD/
+    make
+    make install
+    
+
+    cd /home
     mkdir -p /opt/etc
     echo "#! /bin/bash\n\n# script to activate the conda environment" > ~/.bashrc 
     conda init bash
@@ -136,14 +146,14 @@ From: ubuntu:22.04
 
 
 %test
-	export PATH=/home/TEspeX:$PATH
-	conda init bash
-	conda activate TEspeX_deps
+	#export PATH=/home/TEspeX:$PATH
+	#conda init bash
+	#conda activate TEspeX_deps
 	python3 /home/TEspeX/TEspeX.py --version
 
 	
 %runscript
-	echo "This is the container for TEspeX v2.0.1 $VAL" 
+	echo "This is the container for TEspeX v2.0.1" 
   
   
 
