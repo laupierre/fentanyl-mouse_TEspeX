@@ -122,7 +122,6 @@ res$gene_type[is.na (res$gene_type)] <- paste ("transposon", gsub (".*#", "", re
 colnames (res)[1] <- "Geneid"
 res <- res[order (res$padj), ]
 
-
 write.xlsx (res, "hippocampus_deseq2_WithdrawalvsFentanyl_with_transposons_differential_expression.xlsx", rowNames=F)
 
 
