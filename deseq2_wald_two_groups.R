@@ -112,11 +112,16 @@ resultsNames(ddsLRT)
 
 res <- results(ddsLRT, contrast=list("condition_W_vs_C", "condition_F_vs_C"), test="Wald")  ## This is equivalent to W/F
 
-
 res <- merge (data.frame (res), counts (dds), by="row.names")
-res <- merge (res, annot, by.x="Row.names", by.y="Geneid")
+res <- merge (res, annot, by.x="Row.names", by.y="Geneid", all.x=TRUE)
+
+res$gene_name [is.na (res$gene_name)] <- res$Row.names [is.na (res$gene_name)]
+res$external_gene_name [is.na (res$external_gene_name)] <- res$Row.names [is.na (res$external_gene_name)]
+res$gene_type[is.na (res$gene_type)] <- paste ("transposon", gsub (".*#", "", res$Row.names [is.na (res$gene_type)]), sep=":")
+
 colnames (res)[1] <- "Geneid"
 res <- res[order (res$padj), ]
+
 
 write.xlsx (res, "hippocampus_deseq2_WithdrawalvsFentanyl_with_transposons_differential_expression.xlsx", rowNames=F)
 
