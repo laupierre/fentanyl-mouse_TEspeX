@@ -10,7 +10,7 @@ https://github.com/fansalon/TEspeX
 3- The STAR counts from the RNA-Seq_mouse pipeline is placed inside the same folder as in 1) for differentital analysis   
 4- In this example, we use the fentanyl mouse RNA-Seq experiment to perform differential expression analysis. The differential expression of genes and TEs is made by DESeq2 using the deseq2_wald_two_groups.R.  
 
-The results of the 3 following comparisons are obtained:
+The results of the 3 following comparisons are obtained in the following files:
 hippocampus_deseq2_FentanylvsControl_with_transposons_differential_expression.xlsx (F vs C)
 hippocampus_deseq2_WithdrawalvsControl_with_transposons_differential_expression.xlsx (W vs C)
 hippocampus_deseq2_WithdrawalvsFentanyl_with_transposons_differential_expression.xlsx (W vs F)
