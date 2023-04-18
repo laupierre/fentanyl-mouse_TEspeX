@@ -129,6 +129,7 @@ From: ubuntu:22.04
 
 
 %test
+    . /opt/conda/etc/profile.d/conda.sh
     conda activate TEspeX_deps
     python3 /home/TEspeX/TEspeX.py --version
 
