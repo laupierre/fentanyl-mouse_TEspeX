@@ -14,10 +14,10 @@ From: ubuntu:22.04
 %environment
 	export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 	export LANG=C.UTF-8 LC_ALL=C.UTF-8
-	export BASH_ENV=/opt/etc/bashrc/.bashrc
+	export BASH_ENV=/opt/etc/bashrc
 	
 	## This source is for conda activate to work with sh
-	source /opt/etc/bashrc/.bashrc	
+	source /opt/etc/bashrc	
 	export PATH=/home/TEspeX:$PATH
 
 
@@ -101,7 +101,6 @@ From: ubuntu:22.04
 
     cd /home
     mkdir -p /opt/etc
-    mkdir /opt/etc/bashrc
     
     echo "#! /bin/bash\n\n# script to activate the conda environment" > ~/.bashrc 
     conda init bash
