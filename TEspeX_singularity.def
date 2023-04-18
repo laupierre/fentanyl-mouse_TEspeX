@@ -129,11 +129,12 @@ From: ubuntu:22.04
 
 
 %test
-	python3 /home/TEspeX/TEspeX.py --version
+    conda activate TEspeX_deps
+    python3 /home/TEspeX/TEspeX.py --version
 
 	
 %runscript
-	echo "This is the container for TEspeX v2.0.1" 
+    echo "This is the container for TEspeX v2.0.1" 
   
   
 
