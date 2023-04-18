@@ -16,7 +16,7 @@ From: ubuntu:22.04
 	export LANG=C.UTF-8 LC_ALL=C.UTF-8
 	export BASH_ENV=/root/.bashrc
 	
-	## This source is for conda activate to work with sh
+	## This source is for conda activate to work with apptainer sh
 	source /root/.bashrc	
 	export PATH=/home/TEspeX:$PATH
 
@@ -126,7 +126,7 @@ From: ubuntu:22.04
 
 
 %test
-    #conda activate TEspeX_deps
+    #conda activate TEspeX_deps               ## only needed with apptainer /bin/bash and not with apptainer sh
     #python3 /home/TEspeX/TEspeX.py --version
 
 	
