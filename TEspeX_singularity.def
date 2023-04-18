@@ -16,8 +16,8 @@ From: ubuntu:22.04
 	export LANG=C.UTF-8 LC_ALL=C.UTF-8
 	export BASH_ENV=/opt/etc/bashrc
 	
-	# This source is for conda activate to work
-	source /opt/etc/bashrc	
+	## This source is for conda activate to work
+	#source /opt/etc/bashrc/.bashrc	
 	export PATH=/home/TEspeX:$PATH
 
 
