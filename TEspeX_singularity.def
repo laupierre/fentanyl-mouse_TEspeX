@@ -17,7 +17,7 @@ From: ubuntu:22.04
 	export BASH_ENV=/opt/etc/bashrc/.bashrc
 	
 	## This source is for conda activate to work with sh
-	#source /opt/etc/bashrc/.bashrc	
+	source /opt/etc/bashrc/.bashrc	
 	export PATH=/home/TEspeX:$PATH
 
 
