@@ -14,10 +14,10 @@ From: ubuntu:22.04
 %environment
 	export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 	export LANG=C.UTF-8 LC_ALL=C.UTF-8
-	export BASH_ENV=/opt/etc/bashrc
+	export BASH_ENV=/root/.bashrc
 	
 	## This source is for conda activate to work with sh
-	source /opt/etc/bashrc	
+	source /root/.bashrc	
 	export PATH=/home/TEspeX:$PATH
 
 
@@ -100,12 +100,11 @@ From: ubuntu:22.04
     
 
     cd /home
-    mkdir -p /opt/etc
     
     echo "#! /bin/bash\n\n# script to activate the conda environment" > ~/.bashrc 
     conda init bash
     echo "\nconda activate TEspeX_deps" >> ~/.bashrc
-    cp ~/.bashrc /opt/etc/bashrc
+    cp ~/.bashrc /root
     
     
     # Download and unzip the Dfam curated database
