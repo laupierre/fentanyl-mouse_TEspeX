@@ -12,11 +12,16 @@ From: ubuntu:22.04
 	This is the container with TEspeX v2.0.1 for counting families of transposons
 
 %environment
-	PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
-	LANG=C.UTF-8 LC_ALL=C.UTF-8
+	export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+	export LANG=C.UTF-8 LC_ALL=C.UTF-8
+	export BASH_ENV=/opt/etc/bashrc
 	
-%files
+	# This source is for conda activate to work
+	source /opt/etc/bashrc	
+	export PATH=/home/TEspeX:$PATH
 
+
+%files
 	    
 %post
     apt-get -qq -y update
@@ -62,7 +67,7 @@ From: ubuntu:22.04
     libxrender1
     
     
-    export LANG=C.UTF-8 LC_ALL=C.UTF-8
+    LANG=C.UTF-8 LC_ALL=C.UTF-8
     
     
     # Install miniconda 3
@@ -118,37 +123,10 @@ From: ubuntu:22.04
     #do
     #./famdb.py -i Dfam_curatedonly.h5 families --include-class-in-name --class $cls -f fasta_name -ad 'Mus musculus' >> mmusculus.Dfam.fa
     #done
-
-
-
-%environment
-	export LANG=C.UTF-8 LC_ALL=C.UTF-8
-	
-	# This source is for conda activate to work
-	source /opt/etc/bashrc
-	
-	export PATH=/home/TEspeX:$PATH
 		
-		
-	# conda activate is needed by python3 but the implementation below is not optimal
-	
-	#echo ". /usr/local/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
-	#echo "conda activate TEspeX_deps" >> $SINGULARITY_ENVIRONMENT
-	
-	#. /usr/local/etc/profile.d/conda.sh
-	#conda activate TEspeX_deps
-	
-	#VAL=`python3 /home/TEspeX/TEspeX.py --version`
-	#echo "export VAL=\"${VAL}\"" >> $SINGULARITY_ENVIRONMENT
-	
-	#echo "software TEspeX" >> "$SINGULARITY_LABELS"
-	#echo "version $VAL" >> "$SINGULARITY_LABELS"
 
 
 %test
-	#export PATH=/home/TEspeX:$PATH
-	#conda init bash
-	#conda activate TEspeX_deps
 	python3 /home/TEspeX/TEspeX.py --version
 
 	
