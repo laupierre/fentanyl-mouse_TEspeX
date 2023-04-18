@@ -14,7 +14,7 @@ From: ubuntu:22.04
 %environment
 	export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 	export LANG=C.UTF-8 LC_ALL=C.UTF-8
-	export BASH_ENV=/opt/etc/bashrc
+	export BASH_ENV=/opt/etc/bashrc/.bashrc
 	
 	## This source is for conda activate to work
 	#source /opt/etc/bashrc/.bashrc	
