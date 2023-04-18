@@ -101,6 +101,8 @@ From: ubuntu:22.04
 
     cd /home
     mkdir -p /opt/etc
+    mkdir /opt/etc/bashrc
+    
     echo "#! /bin/bash\n\n# script to activate the conda environment" > ~/.bashrc 
     conda init bash
     echo "\nconda activate TEspeX_deps" >> ~/.bashrc
