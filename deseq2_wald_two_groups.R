@@ -59,7 +59,6 @@ counts <- rbind (counts, tesp)
 
 
 ## DESeq2 
-
 dds <- DESeqDataSetFromMatrix(countData = round (counts), colData = samples, design = ~ sex +condition)
                                  
 # keep <- rowSums(counts(dds)) >= 10
@@ -74,6 +73,7 @@ resultsNames(ddsLRT)
 res <- results(ddsLRT, contrast=list("condition_F_vs_C"), test="Wald")
 
 res <- merge (data.frame (res), counts (dds), by="row.names")
+#res <- merge (data.frame (res), round (counts (dds, normalized=TRUE)), by="row.names")
 res <- merge (res, annot, by.x="Row.names", by.y="Geneid", all.x=TRUE)
 
 res$gene_name [is.na (res$gene_name)] <- res$Row.names [is.na (res$gene_name)]
@@ -93,6 +93,7 @@ resultsNames(ddsLRT)
 res <- results(ddsLRT, contrast=list("condition_W_vs_C"), test="Wald")
 
 res <- merge (data.frame (res), counts (dds), by="row.names")
+#res <- merge (data.frame (res), round (counts (dds, normalized=TRUE)), by="row.names")
 res <- merge (res, annot, by.x="Row.names", by.y="Geneid", all.x=TRUE)
 
 res$gene_name [is.na (res$gene_name)] <- res$Row.names [is.na (res$gene_name)]
@@ -113,6 +114,7 @@ resultsNames(ddsLRT)
 res <- results(ddsLRT, contrast=list("condition_W_vs_C", "condition_F_vs_C"), test="Wald")  ## This is equivalent to W/F
 
 res <- merge (data.frame (res), counts (dds), by="row.names")
+#res <- merge (data.frame (res), round (counts (dds, normalized=TRUE)), by="row.names")
 res <- merge (res, annot, by.x="Row.names", by.y="Geneid", all.x=TRUE)
 
 res$gene_name [is.na (res$gene_name)] <- res$Row.names [is.na (res$gene_name)]
